@@ -1,12 +1,13 @@
 const primaryColor = "#8e97fd";
 const tintColorLight = primaryColor;
-const tintColorDark = "#fff";
+const tintColorDark = "#3f414e";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   light: {
     primary: "#8e97fd",
-    text: "#000",
+    text: "#3f414e",
+    altText: "#ebeaec",
     background: "#fff",
     tint: tintColorLight,
     tabIconDefault: "#ccc",
@@ -14,7 +15,8 @@ export default {
   },
   dark: {
     primary: "#8e97fd",
-    text: "#fff",
+    text: "#ebeaec",
+    altText: "#3f414e",
     background: "#000",
     tint: tintColorDark,
     tabIconDefault: "#ccc",

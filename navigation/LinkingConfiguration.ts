@@ -1,19 +1,26 @@
 import * as Linking from "expo-linking";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Welcome: {
             screens: {
-              TabOneScreen: "one",
+              WelcomeScreen: "welcome",
+              ChooseTopicScreen: "chooseTopic",
             },
           },
-          TabTwo: {
+          Home: {
             screens: {
-              TabTwoScreen: "two",
+              HomeScreen: "home",
+            },
+          },
+          Authentication: {
+            screens: {
+              AuthenticationScreen: "authentication",
             },
           },
         },

@@ -1,5 +1,6 @@
 export type RootStackParamList = {
-  Root: undefined;
+  Welcome: undefined;
+  BottomTabNavigator: undefined;
   NotFound: undefined;
 };
 
@@ -7,6 +8,11 @@ export type BottomTabParamList = {
   Home: undefined;
   Profile: undefined;
   Authentication: undefined;
+};
+
+export type WelcomeParamList = {
+  Welcome: undefined;
+  ChooseTopic: undefined;
 };
 
 export type HomeParamList = {

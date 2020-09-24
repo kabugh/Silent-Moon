@@ -7,12 +7,10 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-// import AuthenticationScreen from "../screens/AuthenticationScreen";
 import {
   BottomTabParamList,
   HomeParamList,
   ProfileParamList,
-  // AuthenticationParamlist,
 } from "../typings/types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -55,15 +53,16 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
+
 const HomeStack = createStackNavigator<HomeParamList>();
 
 function HomeNavigator() {
   return (
-    <HomeStack.Navigator headerMode="none">
+    <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: "Home Page" }}
+        options={{ headerTitle: "Silent Moon" }}
       />
     </HomeStack.Navigator>
   );
@@ -82,17 +81,3 @@ function ProfileNavigator() {
     </ProfileStack.Navigator>
   );
 }
-
-// const AuthenticationStack = createStackNavigator<AuthenticationParamlist>();
-
-// function AuthenticationNavigator() {
-//   return (
-//     <AuthenticationStack.Navigator>
-//       <AuthenticationStack.Screen
-//         name="AuthenticationScreen"
-//         component={AuthenticationScreen}
-//         options={{ headerTitle: "Authentication" }}
-//       />
-//     </AuthenticationStack.Navigator>
-//   );
-// }

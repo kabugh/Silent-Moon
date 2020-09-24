@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Image, Button, StyleSheet } from "react-native";
+import { Image, StyleSheet, ImageBackground, ScrollView } from "react-native";
+import Button from "react-native-button";
+// import Swiper from "react-native-swiper";
 
 import Hello from "../components/Home/Hello";
 import { Text, View } from "../components/Themed";
@@ -7,6 +9,7 @@ import { vh, vw } from "../components/ViewportUnits";
 import Colors from "../constants/Colors";
 import StaticValues from "../constants/StaticValues";
 import useColorScheme from "../hooks/useColorScheme";
+import Category from "../typings/Category";
 import Recommendation from "../typings/Recommendation";
 
 export default function HomeScreen() {
@@ -19,6 +22,7 @@ export default function HomeScreen() {
     container: {
       flex: 1,
       padding: vh(4),
+      backgroundColor: Colors[colorScheme].background,
     },
     pickedCategoriesContainer: {},
     categoryGrid: {
@@ -32,9 +36,28 @@ export default function HomeScreen() {
       marginTop: vh(2),
       borderRadius: StaticValues.cardBorderRadius,
       backgroundColor: Colors.dark.background,
+      resizeMode: "stretch",
+      overflow: "hidden",
+    },
+    gridLessCategoryContent: {
+      flex: 1,
+      padding: vh(2),
+      backgroundColor: "transparent",
       flexDirection: "row",
       justifyContent: "space-between",
-      padding: vh(2),
+      borderRadius: StaticValues.cardBorderRadius,
+    },
+    playButtonContainer: {
+      width: vh(5),
+      height: vh(5),
+      borderRadius: vh(5) / 2,
+      backgroundColor: Colors.light.background,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    playButton: {
+      fontSize: 12,
+      color: Colors.light.text,
     },
     category: {
       width: "48%",
@@ -44,11 +67,14 @@ export default function HomeScreen() {
       position: "relative",
       justifyContent: "space-between",
       padding: vh(2),
+      overflow: "hidden",
     },
     categoryImage: {
       position: "absolute",
       top: 0,
-      right: 0,
+      right: -5,
+      width: vw(20),
+      height: vh(8),
     },
     categoryTitleContainer: {
       flex: 1,
@@ -57,10 +83,22 @@ export default function HomeScreen() {
     },
     categoryTitle: {
       fontSize: 18,
-      fontWeight: "500",
+      fontWeight: "600",
     },
     categoryType: {
       fontSize: 12,
+    },
+    categoryButtonContainer: {
+      paddingVertical: 4,
+      paddingHorizontal: 8,
+      overflow: "hidden",
+      borderRadius: StaticValues.cardBorderRadius,
+      backgroundColor: Colors.light.background,
+    },
+    categoryButton: {
+      fontSize: 12,
+      textTransform: "uppercase",
+      color: Colors.light.text,
     },
     categoryDescriptionContainer: {
       width: "100%",
@@ -80,17 +118,22 @@ export default function HomeScreen() {
       fontWeight: "bold",
     },
     recommendations: {
+      width: "100%",
       marginTop: vh(2),
       flexDirection: "row",
+      justifyContent: "space-between",
       height: vh(20),
     },
     recommendation: {
-      flex: 1,
+      width: "48%",
+      height: "100%",
     },
     recommendationImage: {
-      flex: 2,
-      height: "30%",
+      width: "100%",
       borderRadius: StaticValues.cardBorderRadius,
+      alignItems: "center",
+      justifyContent: "center",
+      resizeMode: "cover",
     },
     recommendationTitleContainer: {
       flex: 1,
@@ -105,104 +148,141 @@ export default function HomeScreen() {
     },
   });
 
-  const recommendations: Recommendation[] = [
+  const pickedCategories: Category[] = [
     {
-      image: "",
-      title: "Focus",
-      subTitle: "Meditation 5 - 10 min",
+      title: "Basics",
+      type: "Course",
+      appearance: {
+        backgroundColor: "#8e97fd",
+        color: Colors[colorScheme].text,
+        image: "",
+      },
+      duration: "3-5 min",
     },
     {
-      image: "",
+      title: "Advanced",
+      type: "Course",
+      appearance: {
+        backgroundColor: "#ffdb9d",
+        color: Colors.dark.altText,
+        image: "",
+      },
+      duration: "4-6 min",
+    },
+  ];
+
+  const recommendations: Recommendation[] = [
+    {
+      title: "Focus",
+      subTitle: "Meditation 5 - 10 min",
+      image: require("../assets/images/illustrations/focus.png"),
+    },
+    {
       title: "Happiness",
       subTitle: "Meditation 3 - 5 min",
+      image: require("../assets/images/illustrations/happiness.png"),
     },
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Hello name={user.name} />
       <View style={styles.pickedCategoriesContainer}>
         <View style={styles.categoryGrid}>
-          <View style={styles.category}>
-            <Image
-              style={styles.categoryImage}
-              source={{
-                uri: "https://reactnative.dev/img/tiny_logo.png",
-              }}
-            />
-            <View style={styles.categoryTitleContainer}>
-              <Text style={styles.categoryTitle}>Basics</Text>
-              <Text style={styles.categoryType}>Course</Text>
+          {pickedCategories.map((category) => (
+            <View
+              style={[
+                styles.category,
+                { backgroundColor: category.appearance.backgroundColor },
+              ]}
+            >
+              <Image
+                style={styles.categoryImage}
+                source={require("../assets/images/illustrations/basics.png")}
+              />
+              <View style={styles.categoryTitleContainer}>
+                <Text
+                  style={[
+                    styles.categoryTitle,
+                    { color: category.appearance.color },
+                  ]}
+                >
+                  {category.title}
+                </Text>
+                <Text
+                  style={[
+                    styles.categoryType,
+                    { color: category.appearance.color },
+                  ]}
+                >
+                  {category.type}
+                </Text>
+              </View>
+              <View style={styles.categoryDescriptionContainer}>
+                <Text
+                  style={[
+                    styles.categoryDuration,
+                    { color: category.appearance.color },
+                  ]}
+                >
+                  {category.duration}
+                </Text>
+                <Button
+                  title="start"
+                  containerStyle={styles.categoryButtonContainer}
+                  disabledContainerStyle={{ backgroundColor: "grey" }}
+                  style={styles.categoryButton}
+                  onPress={() => console.log("test")}
+                >
+                  Start
+                </Button>
+              </View>
             </View>
-            <View style={styles.categoryDescriptionContainer}>
-              <Text style={styles.categoryDuration}>3 - 10 min</Text>
-              <Button title="start" onPress={() => console.log("test")}>
-                Start
+          ))}
+        </View>
+        <ImageBackground
+          source={require("../assets/images/overlays/clouds.png")}
+          style={styles.gridLessCategory}
+        >
+          <View style={styles.gridLessCategoryContent}>
+            <View style={[styles.categoryTitleContainer, { flex: 3 }]}>
+              <Text style={[styles.categoryTitle, { color: Colors.dark.text }]}>
+                Daily Thoughts
+              </Text>
+              <Text
+                style={[
+                  styles.categoryType,
+                  { paddingTop: 4, color: Colors.dark.text },
+                ]}
+              >
+                Meditation 3 - 10 min
+              </Text>
+            </View>
+            <View
+              style={[
+                styles.categoryDescriptionContainer,
+                { justifyContent: "flex-end", flex: 1 },
+              ]}
+            >
+              <Button
+                title="play"
+                containerStyle={styles.playButtonContainer}
+                style={styles.playButton}
+                onPress={() => console.log("test")}
+              >
+                Play
               </Button>
             </View>
           </View>
-          <View style={styles.category}>
-            {/* <Image></Image> */}
-            <View style={styles.categoryTitleContainer}>
-              <Text style={styles.categoryTitle}>Advanced</Text>
-              <Text style={styles.categoryType}>Music</Text>
-            </View>
-            <View style={styles.categoryDescriptionContainer}>
-              <Text style={styles.categoryDuration}>3 - 10 min</Text>
-              <Button title="start" onPress={() => console.log("test")}>
-                Start
-              </Button>
-            </View>
-          </View>
-        </View>
-        <View style={styles.gridLessCategory}>
-          <View style={[styles.categoryTitleContainer, { flex: 0 }]}>
-            <Text
-              style={[
-                styles.categoryTitle,
-                { color: Colors[colorScheme].altText },
-              ]}
-            >
-              Daily Thoughts
-            </Text>
-            <Text
-              style={[
-                styles.categoryType,
-                { paddingTop: 4, color: Colors[colorScheme].altText },
-              ]}
-            >
-              Meditation 3 - 10 min
-            </Text>
-          </View>
-          <View
-            style={[
-              styles.categoryDescriptionContainer,
-              { alignItems: "flex-end" },
-            ]}
-          >
-            <Button title="start" onPress={() => console.log("test")}>
-              Start
-            </Button>
-          </View>
-        </View>
+        </ImageBackground>
       </View>
       <View style={styles.recommendationsContainer}>
         <Text style={styles.recommendationsTitle}>Recommended for you</Text>
         <View style={styles.recommendations}>
+          {/* <Swiper loop={false}> */}
           {recommendations.map((item) => (
-            <View style={styles.recommendation}>
-              {/* <Image
-                style={styles.recommendationImage}
-                source={{
-                  uri: "https://reactnative.dev/img/tiny_logo.png",
-                }}
-              /> */}
-              <View
-                style={[
-                  styles.recommendationImage,
-                  { backgroundColor: "salmon" },
-                ]}
-              />
+            <View key={item.title} style={styles.recommendation}>
+              <Image style={styles.recommendationImage} source={item.image} />
               <View style={styles.recommendationTitleContainer}>
                 <Text style={styles.recommendationTitle}>{item.title}</Text>
                 <Text style={styles.recommendationSubTitle}>
@@ -211,8 +291,9 @@ export default function HomeScreen() {
               </View>
             </View>
           ))}
+          {/* </Swiper> */}
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }

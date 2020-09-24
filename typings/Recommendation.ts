@@ -1,5 +1,6 @@
 export default interface Recommendation {
-  image: string;
   title: string;
   subTitle: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  image: any;
 }

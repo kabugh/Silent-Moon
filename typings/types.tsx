@@ -6,6 +6,7 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   Home: undefined;
+  Category: undefined;
   Profile: undefined;
   Authentication: undefined;
 };
@@ -17,6 +18,12 @@ export type WelcomeParamList = {
 
 export type HomeParamList = {
   HomeScreen: undefined;
+};
+
+export type CategoryParamList = {
+  HomeCategoryScreen: undefined;
+  WelcomeCategoryScreen: undefined;
+  DetailsCategoryScreen: undefined;
 };
 
 export type ProfileParamList = {

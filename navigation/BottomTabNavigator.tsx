@@ -5,11 +5,13 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import HomeCategoryScreen from "../screens/Category/HomeCategoryScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import {
   BottomTabParamList,
   HomeParamList,
+  CategoryParamList,
   ProfileParamList,
 } from "../typings/types";
 
@@ -29,6 +31,15 @@ export default function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-home" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Category"
+        component={CategoryNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-heart" color={color} />
           ),
         }}
       />
@@ -65,6 +76,20 @@ function HomeNavigator() {
         options={{ headerTitle: "Silent Moon" }}
       />
     </HomeStack.Navigator>
+  );
+}
+
+const CategoryStack = createStackNavigator<CategoryParamList>();
+
+function CategoryNavigator() {
+  return (
+    <CategoryStack.Navigator>
+      <CategoryStack.Screen
+        name="HomeCategoryScreen"
+        component={HomeCategoryScreen}
+        options={{ headerTitle: "Category" }}
+      />
+    </CategoryStack.Navigator>
   );
 }
 

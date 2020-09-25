@@ -16,6 +16,7 @@ export default {
           Home: {
             screens: {
               HomeScreen: "home",
+              HomeCategoryScreen: "homeCategory",
             },
           },
           Authentication: {

@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Image, StyleSheet, ImageBackground, ScrollView } from "react-native";
+import { Image, StyleSheet, ScrollView } from "react-native";
 import Button from "react-native-button";
-// import Swiper from "react-native-swiper";
 
-import Hello from "../components/Home/Hello";
+import PlayCard from "../components/cards/PlayCard";
+import Hello from "../components/home/Hello";
 import { Text, View } from "../components/Themed";
 import { vh, vw } from "../components/ViewportUnits";
 import Colors from "../constants/Colors";
@@ -30,38 +30,8 @@ export default function HomeScreen() {
       justifyContent: "space-between",
       height: vh(20),
     },
-    gridLessCategory: {
-      width: "100%",
-      height: vh(10),
-      marginTop: vh(2),
-      borderRadius: StaticValues.cardBorderRadius,
-      backgroundColor: Colors.dark.background,
-      resizeMode: "stretch",
-      overflow: "hidden",
-    },
-    gridLessCategoryContent: {
-      flex: 1,
-      padding: vh(2),
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      borderRadius: StaticValues.cardBorderRadius,
-    },
-    playButtonContainer: {
-      width: vh(5),
-      height: vh(5),
-      borderRadius: vh(5) / 2,
-      backgroundColor: Colors.light.background,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    playButton: {
-      fontSize: 12,
-      color: Colors.light.text,
-    },
     category: {
       width: "48%",
-      // flex: 1,
       borderRadius: StaticValues.cardBorderRadius,
       backgroundColor: Colors[colorScheme].primary,
       position: "relative",
@@ -240,42 +210,16 @@ export default function HomeScreen() {
             </View>
           ))}
         </View>
-        <ImageBackground
-          source={require("../assets/images/overlays/clouds.png")}
-          style={styles.gridLessCategory}
-        >
-          <View style={styles.gridLessCategoryContent}>
-            <View style={[styles.categoryTitleContainer, { flex: 3 }]}>
-              <Text style={[styles.categoryTitle, { color: Colors.dark.text }]}>
-                Daily Thoughts
-              </Text>
-              <Text
-                style={[
-                  styles.categoryType,
-                  { paddingTop: 4, color: Colors.dark.text },
-                ]}
-              >
-                Meditation 3 - 10 min
-              </Text>
-            </View>
-            <View
-              style={[
-                styles.categoryDescriptionContainer,
-                { justifyContent: "flex-end", flex: 1 },
-              ]}
-            >
-              <Button
-                title="play"
-                containerStyle={styles.playButtonContainer}
-                style={styles.playButton}
-                onPress={() => console.log("test")}
-              >
-                Play
-              </Button>
-            </View>
-          </View>
-        </ImageBackground>
       </View>
+      <PlayCard
+        backgroundImage={require("../assets/images/overlays/clouds.png")}
+        backgroundColor={Colors.dark.background}
+        color={Colors.light.altText}
+        title={"Daily Thoughts"}
+        description={"Meditation 3 - 10 min"}
+        buttonTitle={"Play"}
+        buttonHandler={() => console.log("test")}
+      />
       <View style={styles.recommendationsContainer}>
         <Text style={styles.recommendationsTitle}>Recommended for you</Text>
         <View style={styles.recommendations}>

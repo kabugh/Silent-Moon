@@ -1,13 +1,14 @@
 import * as React from "react";
-import { StyleSheet, ScrollView, Pressable } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Text, View } from "../../components/Themed";
-import { vh, vw } from "../../components/ViewportUnits";
+import { vh } from "../../components/ViewportUnits";
 import Colors from "../../constants/Colors";
-import StaticValues from "../../constants/StaticValues";
 import useColorScheme from "../../hooks/useColorScheme";
+import MasonryGrid from "../../components/cards/MasonryGrid";
+import MasonryGridItem from "../../typings/MasonryGridItem";
 
-export default function ChooseTopicScreen({ navigation }) {
+export default function ChooseTopicScreen({ navigation }: any) {
   const colorScheme = useColorScheme();
   const styles = StyleSheet.create({
     chooseTopicContainer: {
@@ -39,52 +40,44 @@ export default function ChooseTopicScreen({ navigation }) {
       fontSize: 16,
       marginTop: vh(4),
     },
-    topicsContainer: {
-      flex: 1,
-      width: "100%",
-      flexDirection: "row",
-      justifyContent: "center",
-      marginTop: vh(2),
-    },
-    halfContainer: {
-      flex: 1,
-    },
-    topicItem: {
-      flex: 1,
-      borderRadius: StaticValues.cardBorderRadius,
-      marginTop: vh(2),
-    },
   });
 
-  const topics = [
+  const topics: MasonryGridItem[] = [
     {
       backgroundColor: "#808AFF",
       id: 0,
       flex: 3,
+      routeComponent: "BottomTabNavigator",
     },
     {
       backgroundColor: "#FA6E5A",
       id: 1,
       flex: 2,
+      routeComponent: "BottomTabNavigator",
     },
     {
       backgroundColor: "#FEB18F",
       id: 2,
       flex: 3,
+      routeComponent: "BottomTabNavigator",
     },
     {
       backgroundColor: "#FFCF86",
+      id: 3,
       flex: 3,
+      routeComponent: "BottomTabNavigator",
     },
     {
       backgroundColor: "#3F414E",
       id: 4,
       flex: 2,
+      routeComponent: "BottomTabNavigator",
     },
     {
       backgroundColor: "#D9A5B5",
-      id: 4,
+      id: 5,
       flex: 3,
+      routeComponent: "BottomTabNavigator",
     },
   ];
 
@@ -100,46 +93,11 @@ export default function ChooseTopicScreen({ navigation }) {
             Choose your desired goal to focus on
           </Text>
         </View>
-        <ScrollView contentContainerStyle={styles.topicsContainer}>
-          <View style={[styles.halfContainer, { marginRight: vw(2) }]}>
-            {topics
-              .filter((_, i) => i % 2 === 0)
-              .map((topic) => (
-                <Pressable
-                  key={topic.id}
-                  onPress={() => navigation.replace("BottomTabNavigator")}
-                  style={[
-                    styles.topicItem,
-                    {
-                      backgroundColor: topic.backgroundColor,
-                      flex: topic.flex,
-                    },
-                  ]}
-                >
-                  <View />
-                </Pressable>
-              ))}
-          </View>
-          <View style={[styles.halfContainer, { marginLeft: vw(2) }]}>
-            {topics
-              .filter((_, i) => i % 2 !== 0)
-              .map((topic) => (
-                <Pressable
-                  key={topic.id}
-                  onPress={() => navigation.replace("BottomTabNavigator")}
-                  style={[
-                    styles.topicItem,
-                    {
-                      backgroundColor: topic.backgroundColor,
-                      flex: topic.flex,
-                    },
-                  ]}
-                >
-                  <View />
-                </Pressable>
-              ))}
-          </View>
-        </ScrollView>
+        <MasonryGrid
+          navigation={navigation}
+          navigationType={"navigate"}
+          items={topics}
+        />
       </View>
     </View>
   );

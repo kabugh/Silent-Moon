@@ -8,6 +8,7 @@ import useColorScheme from "../../hooks/useColorScheme";
 import MasonryGrid from "../../components/cards/MasonryGrid";
 import MasonryGridItem from "../../typings/MasonryGridItem";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ChooseTopicScreen({ navigation }: any) {
   const colorScheme = useColorScheme();
   const styles = StyleSheet.create({

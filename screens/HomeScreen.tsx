@@ -161,6 +161,7 @@ export default function HomeScreen() {
         <View style={styles.categoryGrid}>
           {pickedCategories.map((category) => (
             <View
+              key={category.title}
               style={[
                 styles.category,
                 { backgroundColor: category.appearance.backgroundColor },

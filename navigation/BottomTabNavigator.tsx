@@ -5,6 +5,7 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import DetailsCategoryScreen from "../screens/Category/DetailsCategoryScreen";
 import HomeCategoryScreen from "../screens/Category/HomeCategoryScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -88,6 +89,11 @@ function CategoryNavigator() {
         name="HomeCategoryScreen"
         component={HomeCategoryScreen}
         options={{ headerTitle: "Category" }}
+      />
+      <CategoryStack.Screen
+        name="DetailsCategoryScreen"
+        component={DetailsCategoryScreen}
+        options={{ headerTitle: "Details" }}
       />
     </CategoryStack.Navigator>
   );

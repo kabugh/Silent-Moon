@@ -45,37 +45,37 @@ export default function ChooseTopicScreen({ navigation }: any) {
 
   const topics: MasonryGridItem[] = [
     {
-      backgroundColor: "#808AFF",
+      backgroundImage: "#808AFF",
       id: 0,
       flex: 3,
       routeComponent: "BottomTabNavigator",
     },
     {
-      backgroundColor: "#FA6E5A",
+      backgroundImage: "#FA6E5A",
       id: 1,
       flex: 2,
       routeComponent: "BottomTabNavigator",
     },
     {
-      backgroundColor: "#FEB18F",
+      backgroundImage: "#FEB18F",
       id: 2,
       flex: 3,
       routeComponent: "BottomTabNavigator",
     },
     {
-      backgroundColor: "#FFCF86",
+      backgroundImage: "#FFCF86",
       id: 3,
       flex: 3,
       routeComponent: "BottomTabNavigator",
     },
     {
-      backgroundColor: "#3F414E",
+      backgroundImage: "#3F414E",
       id: 4,
       flex: 2,
       routeComponent: "BottomTabNavigator",
     },
     {
-      backgroundColor: "#D9A5B5",
+      backgroundImage: "#D9A5B5",
       id: 5,
       flex: 3,
       routeComponent: "BottomTabNavigator",

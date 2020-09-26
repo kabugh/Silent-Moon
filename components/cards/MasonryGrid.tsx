@@ -39,13 +39,17 @@ export default function MasonryGrid(props: {
               key={item.id}
               onPress={() =>
                 props.navigationType === "replace"
-                  ? props.navigation.replace(item.routeComponent)
-                  : props.navigation.navigate(item.routeComponent)
+                  ? props.navigation.replace(item.routeComponent, {
+                      ...item,
+                    })
+                  : props.navigation.navigate(item.routeComponent, {
+                      ...item,
+                    })
               }
               style={[
                 styles.cardItem,
                 {
-                  backgroundColor: item.backgroundColor,
+                  backgroundColor: item.backgroundImage,
                   flex: item.flex,
                 },
               ]}
@@ -61,15 +65,18 @@ export default function MasonryGrid(props: {
             <Pressable
               key={item.id}
               onPress={() =>
-                // props.navigationType === "replace"
-                //   ? props.navigation.replace(item.routeComponent)
-                //   : props.navigation.navigate(item.routeComponent)
-                props.navigation.navigate(item.routeComponent)
+                props.navigationType === "replace"
+                  ? props.navigation.replace(item.routeComponent, {
+                      ...item,
+                    })
+                  : props.navigation.navigate(item.routeComponent, {
+                      ...item,
+                    })
               }
               style={[
                 styles.cardItem,
                 {
-                  backgroundColor: item.backgroundColor,
+                  backgroundColor: item.backgroundImage,
                   flex: item.flex,
                 },
               ]}

@@ -1,7 +1,7 @@
 export default interface MasonryGridItem {
   title?: string;
-  backgroundColor: string;
+  backgroundImage: string;
   id: number;
   flex: number;
   routeComponent: string;
-};
+}

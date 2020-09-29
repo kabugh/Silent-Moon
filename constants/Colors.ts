@@ -18,8 +18,8 @@ export default {
     text: "#ebeaec",
     altText: "#3f414e",
     background: "#333242",
-    tint: tintColorDark,
-    tabIconDefault: "#ccc",
-    tabIconSelected: tintColorDark,
+    tint: tintColorLight,
+    tabIconDefault: tintColorDark,
+    tabIconSelected: "#ccc",
   },
 };

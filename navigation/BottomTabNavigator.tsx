@@ -93,7 +93,9 @@ function CategoryNavigator() {
       <CategoryStack.Screen
         name="DetailsCategoryScreen"
         component={DetailsCategoryScreen}
-        options={{ headerTitle: "Details" }}
+        options={{
+          headerTitle: "Details",
+        }}
       />
     </CategoryStack.Navigator>
   );

@@ -71,6 +71,8 @@ export default function HomeCategoryScreen({ navigation }: any) {
       title: "Test",
       backgroundImage: "#808AFF",
       courseType: "anxious",
+      description:
+        "Ease the mind into a restful night’s sleep  with these deep, ambient tones.",
       id: 0,
       flex: 3,
       routeComponent: "DetailsCategoryScreen",
@@ -79,6 +81,7 @@ export default function HomeCategoryScreen({ navigation }: any) {
       title: "Test",
       backgroundImage: "#FA6E5A",
       courseType: "fav",
+      description: "Ease the mind into a restful night’s sleep.",
       id: 1,
       flex: 2,
       routeComponent: "DetailsCategoryScreen",
@@ -87,6 +90,7 @@ export default function HomeCategoryScreen({ navigation }: any) {
       title: "Test",
       backgroundImage: "#FEB18F",
       courseType: "sleep",
+      description: "Sleep  with these deep, ambient tones.",
       id: 2,
       flex: 3,
       routeComponent: "DetailsCategoryScreen",
@@ -95,6 +99,8 @@ export default function HomeCategoryScreen({ navigation }: any) {
       title: "Test",
       backgroundImage: "#FFCF86",
       courseType: "anxious",
+      description:
+        "Ease the mind into a restful night’s sleep  with these deep, ambient tones.",
       id: 3,
       flex: 3,
       routeComponent: "DetailsCategoryScreen",
@@ -103,6 +109,8 @@ export default function HomeCategoryScreen({ navigation }: any) {
       title: "Test",
       backgroundImage: "#3F414E",
       courseType: "sleep",
+      description:
+        "Ease the mind into a restful night’s sleep  with these deep, ambient tones.",
       id: 4,
       flex: 2,
       routeComponent: "DetailsCategoryScreen",
@@ -111,6 +119,8 @@ export default function HomeCategoryScreen({ navigation }: any) {
       title: "Test",
       backgroundImage: "#D9A5B5",
       courseType: "fav",
+      description:
+        "Ease the mind into a restful night’s sleep  with these deep, ambient tones.",
       id: 5,
       flex: 3,
       routeComponent: "DetailsCategoryScreen",

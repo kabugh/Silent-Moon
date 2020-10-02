@@ -2,6 +2,7 @@ import * as React from "react";
 import { Image, StyleSheet, ScrollView } from "react-native";
 import Button from "react-native-button";
 
+import CourseCard from "../components/cards/CourseCard";
 import PlayCard from "../components/cards/PlayCard";
 import Hello from "../components/home/Hello";
 import { Text, View } from "../components/Themed";
@@ -93,28 +94,6 @@ export default function HomeScreen() {
       flexDirection: "row",
       justifyContent: "space-between",
       height: vh(20),
-    },
-    recommendation: {
-      width: "48%",
-      height: "100%",
-    },
-    recommendationImage: {
-      width: "100%",
-      borderRadius: StaticValues.cardBorderRadius,
-      alignItems: "center",
-      justifyContent: "center",
-      resizeMode: "cover",
-    },
-    recommendationTitleContainer: {
-      flex: 1,
-      paddingVertical: vh(1),
-    },
-    recommendationTitle: {
-      fontSize: 18,
-      fontWeight: "bold",
-    },
-    recommendationSubTitle: {
-      fontSize: 12,
     },
   });
 
@@ -226,15 +205,12 @@ export default function HomeScreen() {
         <View style={styles.recommendations}>
           {/* <Swiper loop={false}> */}
           {recommendations.map((item) => (
-            <View key={item.title} style={styles.recommendation}>
-              <Image style={styles.recommendationImage} source={item.image} />
-              <View style={styles.recommendationTitleContainer}>
-                <Text style={styles.recommendationTitle}>{item.title}</Text>
-                <Text style={styles.recommendationSubTitle}>
-                  {item.subTitle}
-                </Text>
-              </View>
-            </View>
+            <CourseCard
+              key={item.title}
+              image={item.image}
+              title={item.title}
+              subTitle={item.subTitle}
+            />
           ))}
           {/* </Swiper> */}
         </View>
